@@ -25,8 +25,8 @@ if($method == 'POST'){
 	$to      = $Email;
 	$subject = 'Chatbot - Backlog Summary';
 	$message = 'We have 43,234 Backlogs, 5400 Exceptions and 50 Escalations effecting the total revenue of 5 billion';
-	$headers = 'From: dinesh.sidd05@gmail.com' . "\r\n" .
-    'Reply-To: dinesh.sidd05@gmail.com' . "\r\n" .
+	$headers = 'From: rachnarke@gmail.com' . "\r\n" .
+    'Reply-To: rachnarke@gmail.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
 	mail($to, $subject, $message, $headers);
