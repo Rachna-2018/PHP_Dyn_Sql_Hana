@@ -9,12 +9,7 @@ if($method == 'POST'){
     $requestBody = file_get_contents('php://input');
     $json = json_decode($requestBody);
  
-    $backlog = $json->queryResult->parameters->backlog;
-    $revenue = $json->queryResult->parameters->revenue;
-    $exception = $json->queryResult->parameters->exception;
-	$escalation = $json->queryResult->parameters->escalation;
-    $count = $json->queryResult->parameters->count;
-    $UOV = $json->queryResult->parameters->UOV;
+    
     $Email = $json->queryResult->parameters->Email;
     $city = $json->queryResult->parameters->city;
     $show = $json->queryResult->parameters->show;	
@@ -62,37 +57,8 @@ if($method == 'POST'){
 	}
 	
  
-    if (( strlen($revenue) > 1) && (strlen($exception) < 1) && ( strlen($backlog ) < 1)){
-    $speech = "Total Revenue for this Quarter is $300 Billion";
-    }
- 
-    elseif ((strlen($UOV ) > 1) && (strlen($exception) < 1) && (strlen($backlog ) < 1)){
-    $speech = "Well , Not too bad, We have 43,234 Backlogs, 5400 Exceptions and 50 Escalations effecting the total revenue of 5 billion";
-    }
- 
-    elseif ((strlen($backlog ) > 1) && (strlen($revenue ) > 1)){
-    $speech = "Around $5 billion revenue is getting effected currently due to backlogs";
-    }
-    elseif ((strlen($backlog ) > 1) && (strlen($revenue ) < 1)){
-    $speech = "We have 65490 backlogs today";
-    }
-    elseif ((strlen($exception) > 1) && (strlen($revenue ) > 1)){
-    $speech = "Around 3 Billion Dollar revenue is getting effected by current Exceptions ";
-    }
-    elseif ((strlen($exception) > 1) && (strlen($revenue ) < 1)){
-    $speech = "We have 5400 exception orders today ";
-    }
-	
-	elseif ((strlen($escalation) > 1) && (strlen($revenue ) > 1)){
-    $speech = "Around 100 Million Dollar revenue is getting effected by current Exceptions ";
-    }
-    elseif ((strlen($escalation) > 1) && (strlen($revenue ) < 1)){
-    $speech = "We have 30 L4 escalations today ";
-    }
- 
-    elseif ((strlen($count) > 0) && (strlen($backlog ) < 1) && (strlen($exception) < 1)){
-    $speech = "We have 65490 backlog orders today ";
-    }
+    
+    
  
  
  
