@@ -182,7 +182,7 @@ if($method == 'POST')
 		foreach ($someobj["results"] as $value) 
 		{
 			
-			$speech = $value["AVAILCOUNT"].$display_text;
+			$speech = $value["AVAILCOUNT"]." houses " .$display_text;
 			
 			
 			
