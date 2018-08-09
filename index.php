@@ -144,11 +144,45 @@ if($method == 'POST')
     		curl_setopt_array( $ch, $options );
 		$json = curl_exec( $ch );
 		$someobj = json_decode($json,true);
-		//$speech = "houses are available in metro areas $json" ;
+		 $area_text = " in ".$AREA_NUM. " metro area location";
+		 $year_text = " built in ". $BUILT_YEAR . " year ";
+		 $room_text = " having ". " $ROOMS ". " bedrooms ";
+		if($AREA_NUM == 0 AND $BUILT_YEAR == 0 AND $ROOMS == 0)
+		{
+			$display_text = "";
+		}
+		else if($AREA_NUM != 0 AND $BUILT_YEAR != 0 AND $ROOMS != 0)
+		{
+			$display_text = $area_text.$year_text.$room_text;
+		}
+		else if($AREA_NUM != 0 AND $BUILT_YEAR == 0 AND $ROOMS == 0)
+		{
+			$display_text = $area_text;
+		}
+		else if($AREA_NUM == 0 AND $BUILT_YEAR != 0 AND $ROOMS == 0)
+		{
+			$display_text = $year_text;
+		}
+		else if($AREA_NUM == 0 AND $BUILT_YEAR == 0 AND $ROOMS != 0)
+		{
+			$display_text = $room_text;
+		}
+		else if($AREA_NUM != 0 AND $BUILT_YEAR != 0 AND $ROOMS == 0)
+		{
+			$display_text = $area_text.$year_text;
+		}
+		else if($AREA_NUM == 0 AND $BUILT_YEAR != 0 AND $ROOMS != 0)
+		{
+			$display_text = $year_text.$room_text;
+		}
+		else if($AREA_NUM != 0 AND $BUILT_YEAR == 0 AND $ROOMS != 0)
+		{
+			$display_text = $area_text.$room_text;
+		}
 		foreach ($someobj["results"] as $value) 
 		{
-			$speech = $value["AVAILCOUNT"]. " houses are available in ". $AREA_NUM. " metro area location";
-			$speech .= " built in ". $BUILT_YEAR . " year having ". " $ROOMS ". " bedrooms";
+			
+			$speech = $value["AVAILCOUNT"].$display_text;
 			
 			
 			
