@@ -118,25 +118,16 @@ if($method == 'POST')
 		$ENT_LOC= strtoupper($ENT_LOC);
 		$ENT_OP= $json->queryResult->parameters->ENT_OP;
 		$ENT_OP= strtoupper($ENT_OP);
+		$ENT_BUILT= $json->queryResult->parameters->ENT_BUILT;
+		$ENT_BUILT= strtoupper($ENT_BUILT);
 		$ROOMS= $json->queryResult->parameters->ROOMS;
+		$AREA_NUM= $json->queryResult->parameters->AREA_NUM;
+		$BUILT_YEAR= $json->queryResult->parameters->BUILT_YEAR;
 		if($ENT_ROOM == "") {$ENT_ROOM = 'BEDROOM';}
 		if($ENT_LOC == "") {$ENT_LOC = 'LOCATION';}
 		if($ENT_OP == "") {$ENT_OP = 'MANY';}
 		if($ENT_BUILT == "") {$ENT_BUILT = 'BUILT';}
-		
-		
-		
-		//$ENT_ROOM= $json->queryResult->parameters->ENT_ROOM;
-		//$ENT_LOC= $json->queryResult->parameters->ENT_LOC;
-		//$ENT_OP= $json->queryResult->parameters->ENT_OP;
-		$ENT_BUILT= $json->queryResult->parameters->ENT_BUILT;
-		$ENT_BUILT= strtoupper($ENT_BUILT);
-		
-		$AREA_NUM= $json->queryResult->parameters->AREA_NUM;
-		$ROOMS= $json->queryResult->parameters->ROOMS;
-		$BUILT_YEAR= $json->queryResult->parameters->BUILT_YEAR;
-		
-		
+		echo $ENT_ROOM; echo $ENT_LOC; echo $ENT_OP; echo $ENT_BUILT;
 		
 		$username    = "SANYAM_K";
     		$password    = "Welcome@123";
