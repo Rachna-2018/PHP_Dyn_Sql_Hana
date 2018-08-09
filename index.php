@@ -45,7 +45,7 @@ if($method == 'POST')
 		$ROOMS= $json->queryResult->parameters->ROOMS;
 		if($ENT_ROOM == "") {$ENT_ROOM = 'BEDROOM';}
 		if($ENT_LOC == "") {$ENT_LOC = 'LOCATION';}
-		if($ENT_OP == "") {$ENT_OP = 'WHICH';}
+		if($ENT_OP == "") {$ENT_OP = '0';}
 		
 		
 	
