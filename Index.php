@@ -10,56 +10,44 @@ if($method == 'POST')
 	
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
-	$text = $json->queryResult->parameters->text;
-	$text=strtoupper($text);
+	
+			     
+			     
+	$com = $json->queryResult->parameters->command;
+	
+	/*$ENT_ROOM= $json->queryResult->parameters->ENT_ROOM;
+	$ENT_LOC= $json->queryResult->parameters->ENT_LOC;
+	$ENT_SAL= $json->queryResult->parameters->ENT_SAL;
+	$ENT_OP= $json->queryResult->parameters->ENT_OP;
+	$ENT_BUILT= $json->queryResult->parameters->ENT_BUILT;
+	$ENT_SAL= $json->queryResult->parameters->ENT_SAL;
+	$AREA_NUM= $json->queryResult->parameters->AREA_NUM;
+	$ROOMS= $json->queryResult->parameters->ROOMS;
+	$BUILT_YEAR= $json->queryResult->parameters->BUILT_YEAR;*/
 	
 	
-	if ($text=='HANA')
-	{
-		$speech="SAP HANA is an in-memory, column-oriented, relational database management system";
-		
-	}
-	else if($text == 'MySQL')
-	{
-		
-		$speech="MySQL is an open-source relational database management system (RDBMS).";
-	}
-	else if($text == 'DATABASE')
-	{
-		$username    = "SANYAM_K";
-    		$password    = "Welcome@123";
-    		$json_url    = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/hana_demo.xsjs";
-		$ch      = curl_init( $json_url );
-    		$options = array(
-        	CURLOPT_SSL_VERIFYPEER => false,
-        	CURLOPT_RETURNTRANSFER => true,
-        	CURLOPT_USERPWD        => "{$username}:{$password}",
-        	CURLOPT_HTTPHEADER     => array( "Accept: application/json" ),
-    		);
-    		curl_setopt_array( $ch, $options );
-		$json = curl_exec( $ch );
-		$someArray = json_decode($json, true);
-		$database=  $someArray[0]["DATABASE_NAME"];
-		$speech = " Database name is $database" ;
-	}
 	
-	/*else
-	{
-		$speech = "Input something else";
-	}*/
-		
-		$com = $json->queryResult->parameters->command;
-		$com = strtolower($com);
-		
-		
-		
+			     
+	$com = strtolower($com);
+	
+	
+	
 	
 	if ($com == 'locality')
 	{
-		$room = $json->queryResult->parameters->rooms;
+		
+		$ENT_ROOM= $json->queryResult->parameters->ENT_ROOM;
+		$ENT_LOC= $json->queryResult->parameters->ENT_LOC;
+		$ENT_OP= $json->queryResult->parameters->ENT_OP;
+		$ENT_OP= strtoupper($ENT_OP);
+		$ROOMS= $json->queryResult->parameters->ROOMS;
+		
+	
 		$username    = "SANYAM_K";
     		$password    = "Welcome@123";
-    		$json_url    = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013.xsjs?cmd=$com&getRooms=$room";
+		//$json_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013_DYN.xsjs?ENT_OP=WHICH&ENT_LOC=LOCATION&ENT_ROOM=BEDROOM&ENT_BUILT=0&ENT_SAL=0&COMMAND=locality&AREA_NUM=0&ROOMS=5&BUILT_YEAR=0&LOWSAL=0&HIGHSAL=0";
+		$json_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013_DYN.xsjs?ENT_OP=$ENT_OP&ENT_LOC=$ENT_LOC&ENT_ROOM=$ENT_ROOM&ENT_BUILT=0&ENT_SAL=0&COMMAND=$com&AREA_NUM=0&ROOMS=$ROOMS&BUILT_YEAR=0&LOWSAL=0&HIGHSAL=0";
+    		//$json_url    = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013.xsjs?cmd=locality&getRooms=$room";
 		$ch      = curl_init( $json_url );
     		$options = array(
         	CURLOPT_SSL_VERIFYPEER => false,
@@ -70,7 +58,7 @@ if($method == 'POST')
     		curl_setopt_array( $ch, $options );
 		$json = curl_exec( $ch );
 		$someobj = json_decode($json,true);
-		$speech = "$room bedroom houses are available in metro areas \n" ;
+		$speech = "$ROOMS bedroom houses are available in metro areas \n" ;
 		foreach ($someobj["results"] as $value) 
 		{
 			$speech .= $value["METRO3"];
@@ -79,15 +67,20 @@ if($method == 'POST')
 			
        		 }	
 	}
-	else if ($com == 'salary' || $com == 'income')
+	else if ($com == 'gethousesal')
 	{
-		$lowsal = $json->queryResult->parameters->lowsal;
-		$highsal = $json->queryResult->parameters->highsal;
-		$com = "gethousesal";
+		//$lowsal = $json->queryResult->parameters->lowsal;
+		//$highsal = $json->queryResult->parameters->highsal;
+		$ENT_LOC = $json->queryResult->parameters->ENT_LOC;
+		$ENT_SAL = $json->queryResult->parameters->ENT_SAL;
+		$ENT_OP = $json->queryResult->parameters->ENT_OP;
+		$LOWSAL= $json->queryResult->parameters->lowsal;
+		$HIGHSAL= $json->queryResult->parameters->highsal;
 		
 		$username    = "SANYAM_K";
     		$password    = "Welcome@123";
-    		$json_url    = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013.xsjs?cmd=$com&totSalLow=$lowsal&totSalHigh=$highsal";
+		//$json_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013_DYN.xsjs?ENT_OP=HOW%20MANY&ENT_LOC=LOCATION&ENT_ROOM=0&ENT_BUILT=0&ENT_SAL=EARN&COMMAND=gethousesal&AREA_NUM=0&ROOMS=0&BUILT_YEAR=0&LOWSAL=15000&HIGHSAL=20015";
+    		$json_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013_DYN.xsjs?ENT_OP=$ENT_OP&ENT_LOC=$ENT_LOC&ENT_ROOM=0&ENT_BUILT=0&ENT_SAL=$ENT_SAL&COMMAND=$com&AREA_NUM=0&ROOMS=0&BUILT_YEAR=0&LOWSAL=$LOWSAL&HIGHSAL=$HIGHSAL";
 		$ch      = curl_init( $json_url );
     		$options = array(
         	CURLOPT_SSL_VERIFYPEER => false,
@@ -107,16 +100,23 @@ if($method == 'POST')
 			
        		 }	
 	}
-	else if ($com == 'metro')
+	else if ($com == 'getcount')
 	{
-		$room = $json->queryResult->parameters->rooms;
-		$year = $json->queryResult->parameters->year;
-		$loc = $json->queryResult->parameters->location;
-		$com = "getcount";
+		
+		$ENT_ROOM= $json->queryResult->parameters->ENT_ROOM;
+		$ENT_LOC= $json->queryResult->parameters->ENT_LOC;
+		$ENT_OP= $json->queryResult->parameters->ENT_OP;
+		$ENT_BUILT= $json->queryResult->parameters->ENT_BUILT;
+		$AREA_NUM= $json->queryResult->parameters->AREA_NUM;
+		$ROOMS= $json->queryResult->parameters->ROOMS;
+		$BUILT_YEAR= $json->queryResult->parameters->BUILT_YEAR;
+		
+		
 		
 		$username    = "SANYAM_K";
     		$password    = "Welcome@123";
-    		$json_url    = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013.xsjs?cmd=$com&getRooms=$room&getBuilt=$year&getLoc=$loc";
+		$json_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013_DYN.xsjs?ENT_OP=$ENT_OP&ENT_LOC=$ENT_LOC&ENT_ROOM=$ENT_ROOM&ENT_BUILT=$ENT_BUILT&ENT_SAL=0&COMMAND=getcount&AREA_NUM=$AREA_NUM&ROOMS=$ROOMS&BUILT_YEAR=$BUILT_YEAR&LOWSAL=0&HIGHSAL=0";
+    		//$json_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013.xsjs?cmd=$com&getRooms=$room&getBuilt=$year&getLoc=$loc";
 		$ch      = curl_init( $json_url );
     		$options = array(
         	CURLOPT_SSL_VERIFYPEER => false,
@@ -130,8 +130,8 @@ if($method == 'POST')
 		//$speech = "houses are available in metro areas $json" ;
 		foreach ($someobj["results"] as $value) 
 		{
-			$speech = $value["AVAILCOUNT"]. " houses are available in ". $loc. " metro area location";
-			$speech .= " built in ". $year . " year having ". " $room ". " bedrooms";
+			$speech = $value["AVAILCOUNT"]. " houses are available in ". $AREA_NUM. " metro area location";
+			$speech .= " built in ". $BUILT_YEAR . " year having ". " $ROOMS ". " bedrooms";
 			
 			
 			
