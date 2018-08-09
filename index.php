@@ -37,15 +37,16 @@ if($method == 'POST')
 	{
 		
 		$ENT_ROOM= $json->queryResult->parameters->ENT_ROOM;
+		$ENT_ROOM= strtoupper($ENT_ROOM);
 		$ENT_LOC= $json->queryResult->parameters->ENT_LOC;
+		$ENT_LOC= strtoupper($ENT_LOC);
 		$ENT_OP= $json->queryResult->parameters->ENT_OP;
 		$ENT_OP= strtoupper($ENT_OP);
 		$ROOMS= $json->queryResult->parameters->ROOMS;
 		if($ENT_ROOM == "") {$ENT_ROOM = 'BEDROOM';}
 		if($ENT_LOC == "") {$ENT_LOC = 'LOCATION';}
 		if($ENT_OP == "") {$ENT_OP = 'WHICH';}
-		echo $ENT_OP;
-		echo $ENT_LOC;
+		
 		
 	
 		$username    = "SANYAM_K";
