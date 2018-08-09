@@ -86,6 +86,7 @@ if($method == 'POST')
 		$HIGHSAL= $json->queryResult->parameters->highsal;
 		if($ENT_LOC == "") {$ENT_LOC = 'LOCATION';}
 		if($ENT_OP == "") {$ENT_OP = 'MANY';}
+		if($ENT_SAL =="") {$ENT_SAL = 'INCOME';}
 		
 		$username    = "SANYAM_K";
     		$password    = "Welcome@123";
