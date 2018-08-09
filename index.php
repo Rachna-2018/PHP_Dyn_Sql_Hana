@@ -44,6 +44,8 @@ if($method == 'POST')
 		if($ENT_ROOM == "") {$ENT_ROOM = 'BEDROOM';}
 		if($ENT_LOC == "") {$ENT_LOC = 'LOCATION';}
 		if($ENT_OP == "") {$ENT_OP = 'WHICH';}
+		echo $ENT_OP;
+		echo $ENT_LOC;
 		
 	
 		$username    = "SANYAM_K";
