@@ -75,13 +75,17 @@ if($method == 'POST')
 	}
 	else if ($com == 'gethousesal')
 	{
-		//$lowsal = $json->queryResult->parameters->lowsal;
-		//$highsal = $json->queryResult->parameters->highsal;
-		$ENT_LOC = $json->queryResult->parameters->ENT_LOC;
+			
+		$ENT_LOC= $json->queryResult->parameters->ENT_LOC;
+		$ENT_LOC= strtoupper($ENT_LOC);
 		$ENT_SAL = $json->queryResult->parameters->ENT_SAL;
-		$ENT_OP = $json->queryResult->parameters->ENT_OP;
+		$ENT_SAL= strtoupper($ENT_SAL);
+		$ENT_OP= $json->queryResult->parameters->ENT_OP;
+		$ENT_OP= strtoupper($ENT_OP);
 		$LOWSAL= $json->queryResult->parameters->lowsal;
 		$HIGHSAL= $json->queryResult->parameters->highsal;
+		if($ENT_LOC == "") {$ENT_LOC = 'LOCATION';}
+		if($ENT_OP == "") {$ENT_OP = 'MANY';}
 		
 		$username    = "SANYAM_K";
     		$password    = "Welcome@123";
@@ -108,11 +112,26 @@ if($method == 'POST')
 	}
 	else if ($com == 'getcount')
 	{
-		
 		$ENT_ROOM= $json->queryResult->parameters->ENT_ROOM;
+		$ENT_ROOM= strtoupper($ENT_ROOM);
 		$ENT_LOC= $json->queryResult->parameters->ENT_LOC;
+		$ENT_LOC= strtoupper($ENT_LOC);
 		$ENT_OP= $json->queryResult->parameters->ENT_OP;
+		$ENT_OP= strtoupper($ENT_OP);
+		$ROOMS= $json->queryResult->parameters->ROOMS;
+		if($ENT_ROOM == "") {$ENT_ROOM = 'BEDROOM';}
+		if($ENT_LOC == "") {$ENT_LOC = 'LOCATION';}
+		if($ENT_OP == "") {$ENT_OP = 'MANY';}
+		if($ENT_BUILT == "") {$ENT_BUILT = 'BUILT';}
+		
+		
+		
+		//$ENT_ROOM= $json->queryResult->parameters->ENT_ROOM;
+		//$ENT_LOC= $json->queryResult->parameters->ENT_LOC;
+		//$ENT_OP= $json->queryResult->parameters->ENT_OP;
 		$ENT_BUILT= $json->queryResult->parameters->ENT_BUILT;
+		$ENT_BUILT= strtoupper($ENT_BUILT);
+		
 		$AREA_NUM= $json->queryResult->parameters->AREA_NUM;
 		$ROOMS= $json->queryResult->parameters->ROOMS;
 		$BUILT_YEAR= $json->queryResult->parameters->BUILT_YEAR;
