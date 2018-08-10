@@ -141,16 +141,16 @@ if($method == 'POST')
 		for ($i = 0; $i < $count; $i++) {
 			if($AREA_NUM == $userespnose[$i]) 
 			{
-				$AREA_NUM = "0";
+				$AREA_NUM = '0';
 			}
 			 if($ROOMS == $userespnose[i])
 			 {
-				$ROOMS = "0";
+				$ROOMS = '0';
 				
 			 }
 			if ($BUILT_YEAR == $userespnose[i])
 			{
-				$BUILT_YEAR = "0";
+				$BUILT_YEAR = '0';
 			}
 		}
 		
