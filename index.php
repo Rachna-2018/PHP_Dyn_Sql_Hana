@@ -10,8 +10,7 @@ if($method == 'POST')
 	
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
-	
-			     
+	    
 			     
 	$com = $json->queryResult->parameters->command;
 	
@@ -25,17 +24,11 @@ if($method == 'POST')
 	$ROOMS= $json->queryResult->parameters->ROOMS;
 	$BUILT_YEAR= $json->queryResult->parameters->BUILT_YEAR;*/
 	
-	
-	
 			     
 	$com = strtolower($com);
-	
-	
-	
-	
+		
 	if ($com == 'locality')
 	{
-		
 		$ENT_ROOM= $json->queryResult->parameters->ENT_ROOM;
 		$ENT_ROOM= strtoupper($ENT_ROOM);
 		$ENT_LOC= $json->queryResult->parameters->ENT_LOC;
@@ -71,7 +64,8 @@ if($method == 'POST')
 			$speech .= "\r\n";
 			
 			
-       		 }	
+       		 }
+		$speech .="\r\n\n Which metro area will you prefer to get more info\n";
 	}
 	else if ($com == 'gethousesal')
 	{
@@ -109,7 +103,8 @@ if($method == 'POST')
 			$speech .= "\r\n";
 			
 			
-       		 }	
+       		 }
+		$speech .="\r\n\n Which area will you prefer to get more info\n";
 	}
 	else if ($com == 'getcount')
 	{
@@ -227,7 +222,7 @@ if($method == 'POST')
 			$speech .= "\r\n";
 			
 			
-       		 }	
+       		}	
 	}	
 	$response = new \stdClass();
     	$response->fulfillmentText = $speech;
