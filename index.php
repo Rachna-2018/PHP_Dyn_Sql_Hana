@@ -130,6 +130,32 @@ if($method == 'POST')
 		if($ENT_BUILT == "") {$ENT_BUILT = 'BUILT';}
 		//echo $ENT_ROOM; echo $ENT_LOC; echo $ENT_OP; echo $ENT_BUILT;
 		
+		$AREA_NUM= strtoupper($AREA_NUM);
+		$ROOMS= strtoupper($ROOMS);
+		$BUILT_YEAR= strtoupper($BUILT_YEAR);
+		
+		
+		
+		$userespnose = array("ANY VALUE", "PLEASE IGNORE", "IGNORE IT", "ANY", "I DON'T CARE", "DON'T KNOW', 'NO IDEA');
+		$count = count($userespnose);
+		for ($i = 0; $i < $count; $i++) {
+			if($AREA_NUM == $userespnose[$i]) 
+			{
+				$AREA_NUM = 0;
+			}
+			 if($ROOMS == $userespnose[i])
+			 {
+				$ROOMS = 0;
+				
+			 }
+			if ($BUILT_YEAR == $userespnose[i])
+			{
+				$BUILT_YEAR = 0;
+			}
+		}
+		
+		
+		
 		$username    = "SANYAM_K";
     		$password    = "Welcome@123";
 		$json_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013_DYN.xsjs?ENT_OP=$ENT_OP&ENT_LOC=$ENT_LOC&ENT_ROOM=$ENT_ROOM&ENT_BUILT=$ENT_BUILT&ENT_SAL=0&COMMAND=getcount&AREA_NUM=$AREA_NUM&ROOMS=$ROOMS&BUILT_YEAR=$BUILT_YEAR&LOWSAL=0&HIGHSAL=0";
