@@ -137,22 +137,9 @@ if($method == 'POST')
 		
 		
 		$userespnose = array("ANY VALUE", "PLEASE IGNORE", "IGNORE IT", "ANY", "I DON'T CARE", "DON'T KNOW', 'NO IDEA');
-		$count = count($userespnose);
-		for ($i = 0; $i < $count; $i++) {
-			if($AREA_NUM == $userespnose[$i]) 
-			{
-				$AREA_NUM = '0';
-			}
-			 if($ROOMS == $userespnose[i])
-			 {
-				$ROOMS = '0';
-				
-			 }
-			if ($BUILT_YEAR == $userespnose[i])
-			{
-				$BUILT_YEAR = '0';
-			}
-		}
+		if (in_array($AREA_NUM, $userespnose)) {$AREA_NUM = '0';}
+		if (in_array($ROOMS, $userespnose)) {$ROOMS = '0';}
+		if (in_array($BUILT_YEAR, $userespnose)) {$BUILT_YEAR = '0';}
 		
 		echo $AREA_NUM; echo $ROOMS; echo $ENT_OP; echo $BUILT_YEAR;
 		
