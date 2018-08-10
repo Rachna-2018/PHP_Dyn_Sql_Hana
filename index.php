@@ -137,7 +137,7 @@ if($method == 'POST')
 		//echo $AREA_NUM; echo $ROOMS; echo $BUILT_YEAR;
 		//echo "\n";
 		
-		$userespnose = array("ANY VALUE", "PLEASE IGNORE", "IGNORE IT", "ANY", "NO IDEA");
+		$userespnose = array("PLEASE", "IGNORE", "ANY", "NO");
 		if (in_array($AREA_NUM, $userespnose)) {$AREA_NUM = '0';}
 		if (in_array($ROOMS, $userespnose)) {$ROOMS = '0';}
 		if (in_array($BUILT_YEAR, $userespnose)) {$BUILT_YEAR = '0';}
