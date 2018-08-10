@@ -128,7 +128,7 @@ if($method == 'POST')
 		if($ENT_LOC == "") {$ENT_LOC = 'LOCATION';}
 		if($ENT_OP == "") {$ENT_OP = 'MANY';}
 		if($ENT_BUILT == "") {$ENT_BUILT = 'BUILT';}
-		//echo $ENT_ROOM; echo $ENT_LOC; echo $ENT_OP; echo $ENT_BUILT;
+		echo $ENT_ROOM; echo $ENT_LOC; echo $ENT_OP; echo $ENT_BUILT;
 		
 		$AREA_NUM= strtoupper($AREA_NUM);
 		$ROOMS= strtoupper($ROOMS);
@@ -154,7 +154,7 @@ if($method == 'POST')
 			}
 		}
 		
-		
+		echo $AREA_NUM; echo $ROOMS; echo $ENT_OP; echo $BUILT_YEAR;
 		
 		$username    = "SANYAM_K";
     		$password    = "Welcome@123";
