@@ -167,7 +167,7 @@ if($method == 'POST')
 		 $area_text = " in $AREA_NUM metro area location";
 		 $year_text = " built in $BUILT_YEAR year ";
 		 $room_text = " having $ROOMS bedrooms ";
-		$sal_text = "who earns between $LOWSAL and $HIGHSAL";
+		$sal_text = " who earns between $LOWSAL and $HIGHSAL";
 		if($AREA_NUM == 0 AND $BUILT_YEAR == 0 AND $ROOMS == 0)
 		{
 			$display_text = "";
