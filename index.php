@@ -161,9 +161,13 @@ if($method == 'POST')
     		curl_setopt_array( $ch, $options );
 		$json = curl_exec( $ch );
 		$someobj = json_decode($json,true);
-		 $area_text = " in ".$AREA_NUM. " metro area location";
-		 $year_text = " built in ". $BUILT_YEAR . " year ";
-		 $room_text = " having ". " $ROOMS ". " bedrooms ";
+		// $area_text = " in ".$AREA_NUM. " metro area location";
+		 //$year_text = " built in ". $BUILT_YEAR . " year ";
+		 //$room_text = " having ". " $ROOMS ". " bedrooms ";
+		 $area_text = " in $AREA_NUM metro area location";
+		 $year_text = " built in $BUILT_YEAR year ";
+		 $room_text = " having $ROOMS bedrooms ";
+		$sal_text = "who earns between $LOWSAL and $HIGHSAL";
 		if($AREA_NUM == 0 AND $BUILT_YEAR == 0 AND $ROOMS == 0)
 		{
 			$display_text = "";
@@ -196,10 +200,12 @@ if($method == 'POST')
 		{
 			$display_text = $area_text.$room_text;
 		}
+		if($HIGHSAL == 0 and $LOWSAL == 0) {$sal_text = " "; }
+		$display_text .= $sal_text;
 		foreach ($someobj["results"] as $value) 
 		{
 			
-			$speech = $value["AVAILCOUNT"]." houses " .$display_text;
+			$speech = $value["AVAILCOUNT"]." houses are available " .$display_text;
 			
 			
 			
