@@ -121,6 +121,10 @@ if($method == 'POST')
 		$BUILT_YEAR= $json->queryResult->parameters->BUILT_YEAR;
 		$LOWSAL= $json->queryResult->parameters->lowsal;
 		$HIGHSAL= $json->queryResult->parameters->highsal;
+		$ENT_SAL = $json->queryResult->parameters->ENT_SAL;
+		$ENT_SAL= strtoupper($ENT_SAL);
+		if($ENT_SAL =="") {$ENT_SAL = 'INCOME';}
+		
 		if($LOWSAL == "") {$LOWSAL = 0;}
 		if($HIGHSAL == "") {$HIGHSAL = 0;}
 		if($ENT_ROOM == "") {$ENT_ROOM = 'BEDROOM';}
@@ -145,7 +149,7 @@ if($method == 'POST')
 		
 		$username    = "SANYAM_K";
     		$password    = "Welcome@123";
-		$json_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013_DYN.xsjs?ENT_OP=$ENT_OP&ENT_LOC=$ENT_LOC&ENT_ROOM=$ENT_ROOM&ENT_BUILT=$ENT_BUILT&ENT_SAL=0&COMMAND=getcount&AREA_NUM=$AREA_NUM&ROOMS=$ROOMS&BUILT_YEAR=$BUILT_YEAR&LOWSAL=$LOWSAL&HIGHSAL=$HIGHSAL";
+		$json_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013_DYN.xsjs?ENT_OP=$ENT_OP&ENT_LOC=$ENT_LOC&ENT_ROOM=$ENT_ROOM&ENT_BUILT=$ENT_BUILT&ENT_SAL=$ENT_SAL&COMMAND=getcount&AREA_NUM=$AREA_NUM&ROOMS=$ROOMS&BUILT_YEAR=$BUILT_YEAR&LOWSAL=$LOWSAL&HIGHSAL=$HIGHSAL";
     		//$json_url = "http://74.201.240.43:8000/ChatBot/Sample_chatbot/HADS_2013.xsjs?cmd=$com&getRooms=$room&getBuilt=$year&getLoc=$loc";
 		$ch      = curl_init( $json_url );
     		$options = array(
